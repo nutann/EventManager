@@ -52,7 +52,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-postagram-devss-161114-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "logicalId": "apipostagram"
       },
-      "lastPushTimeStamp": "2023-12-10T10:38:44.354Z",
+      "lastPushTimeStamp": "2023-12-10T16:57:21.315Z",
       "lastPushDirHash": "RZQLJXrpyCNVyt9Yh0XoCm0vUow="
     }
   },
@@ -84,7 +84,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-postagram-devss-161114-deployment/amplify-cfn-templates/auth/postagramf5c61a0b-cloudformation-template.json",
         "logicalId": "authpostagramf5c61a0b"
       },
-      "lastPushTimeStamp": "2023-12-10T10:38:44.366Z",
+      "lastPushTimeStamp": "2023-12-10T16:57:21.331Z",
       "output": {
         "UserPoolId": "ap-south-1_ChJqGIzjA",
         "AppClientIDWeb": "33n4c0rtij2th74dleq2sndte",
@@ -102,7 +102,7 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "lastPushTimeStamp": "2023-12-10T10:38:47.995Z",
+      "lastPushTimeStamp": "2023-12-10T16:57:23.838Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-postagram-devss-161114-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
         "logicalId": "storageimages"

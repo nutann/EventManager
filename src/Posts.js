@@ -1,52 +1,61 @@
-import React from 'react'
-import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { API, Auth } from "aws-amplify";
+
+import * as queries from "./graphql/queries";
+import * as mutations from "./graphql/mutations";
 
 export default function Posts({
-  posts = [],
   signOut
 }) {
+  const [userId, setUserId] = useState("");
+  const [vendorId, setVendorId] = useState("");
+  useEffect(() => {
+      fetchUserDetails();
+  }, []);
+
+  async function deleteUser() {
+    await API.graphql({
+      query: mutations.deleteUser,
+      authMode: "API_KEY",
+      variables: { input: {id: userId} },
+    });
+    await API.graphql({
+      query: mutations.deleteVendor,
+      authMode: "API_KEY",
+      variables: { input: {id: vendorId} },
+    });
+    await Auth.deleteUser();
+  }
+
+  async function fetchUserDetails() {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+      const userDetails = await API.graphql({
+        query: queries.userbyEmail,
+        authMode: "API_KEY",
+        variables: { email: user.username },
+      });
+      const vendorDetails = await API.graphql({
+        query: queries.vendorbyUserID,
+        authMode: "API_KEY",
+        variables: { userID: userDetails.data.userbyEmail.items[0].id },
+      });
+      setUserId(userDetails.data.userbyEmail.items[0].id);
+      setVendorId(vendorDetails.data.vendorbyUserID.items[0].id)
+
+    } catch (error) {
+      console.log("error retrieving details", error);
+    }
+  }
   return (
     <>
-      <h1>Posts</h1>
+      <h1>Provision to Delete Account</h1>
       <button onClick={signOut}>Sign out</button>
-      {
-        posts.map(post => (
-          <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
-            <div key={post.id} className={postContainer}>
-            <h1 className={postTitleStyle}>{post.vendorType}</h1>
-            <ul>
-            {
-              post.vendorSubCategory && post.vendorSubCategory.map(subCategory => (
-                <li>{subCategory}</li>
-              ))
-            }
-            </ul>
-              {/* <h1 className={postTitleStyle}>{post.name}</h1>
-              <img alt="post" className={imageStyle} src={post.image} /> */}
-            </div>
-          </Link>
-        ))
-      }
+      <div>
+      <button onClick={deleteUser}>Delete Account</button>
+      </div>
+      
     </>
   )
 }
 
-const postTitleStyle = css`
-  margin: 15px 0px;
-  color: #0070f3;
-`
-
-const linkStyle = css`
-  text-decoration: none;
-`
-
-const postContainer = css`
-  border-radius: 10px;
-  padding: 1px 20px;
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  :hover {
-    border-color: #0070f3;
-  }
-`

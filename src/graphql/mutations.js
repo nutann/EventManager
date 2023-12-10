@@ -59,6 +59,9 @@ export const createUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -75,6 +78,9 @@ export const updateUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -91,6 +97,9 @@ export const deleteUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -104,10 +113,33 @@ export const createVendor = /* GraphQL */ `
   ) {
     createVendor(input: $input, condition: $condition) {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;
@@ -118,10 +150,33 @@ export const updateVendor = /* GraphQL */ `
   ) {
     updateVendor(input: $input, condition: $condition) {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;
@@ -132,10 +187,33 @@ export const deleteVendor = /* GraphQL */ `
   ) {
     deleteVendor(input: $input, condition: $condition) {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;

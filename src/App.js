@@ -13,10 +13,7 @@ import Posts from './Posts';
 import Post from './Post';
 import Header from './Header';
 
-
 function App() {
-
-
   return (
     <>
     <Authenticator>
@@ -35,6 +32,7 @@ function App() {
     </div>
        )}
     </Authenticator>
+    
     </>
   );
 }

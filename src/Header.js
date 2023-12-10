@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 export default function Header() {
   return (
     <div className={headerContainer}>
-      <h1 className={headerStyle}>Postagram</h1>
-      <Link to="/" className={linkStyle}>All Posts</Link>
+      <h1 className={headerStyle}>My Event Manager - Business</h1>
+      <Link to="/" className={linkStyle}>User Actions</Link>
     </div>
   )
 }

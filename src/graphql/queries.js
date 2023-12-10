@@ -41,6 +41,9 @@ export const getUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -59,6 +62,9 @@ export const listUsers = /* GraphQL */ `
         type
         userName
         email
+        image
+        location
+        bio
         phone
         createdAt
         updatedAt
@@ -71,10 +77,33 @@ export const getVendor = /* GraphQL */ `
   query GetVendor($id: ID!) {
     getVendor(id: $id) {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;
@@ -87,10 +116,14 @@ export const listVendors = /* GraphQL */ `
     listVendors(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        vendorCategory
-        vendorSubCategory
+        userID
+        vendorID
+        longitude
+        latitude
         createdAt
         updatedAt
+        vendorUserId
+        vendorVendorCategoryId
       }
       nextToken
     }
@@ -124,6 +157,67 @@ export const listVendorCategories = /* GraphQL */ `
         vendorSubCategory
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const userbyEmail = /* GraphQL */ `
+  query UserbyEmail(
+    $email: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    userbyEmail(
+      email: $email
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const vendorbyUserID = /* GraphQL */ `
+  query VendorbyUserID(
+    $userID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelVendorFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    vendorbyUserID(
+      userID: $userID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        userID
+        vendorID
+        longitude
+        latitude
+        createdAt
+        updatedAt
+        vendorUserId
+        vendorVendorCategoryId
       }
       nextToken
     }

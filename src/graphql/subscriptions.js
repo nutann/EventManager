@@ -47,6 +47,9 @@ export const onCreateUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -60,6 +63,9 @@ export const onUpdateUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -73,6 +79,9 @@ export const onDeleteUser = /* GraphQL */ `
       type
       userName
       email
+      image
+      location
+      bio
       phone
       createdAt
       updatedAt
@@ -83,10 +92,33 @@ export const onCreateVendor = /* GraphQL */ `
   subscription OnCreateVendor {
     onCreateVendor {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;
@@ -94,10 +126,33 @@ export const onUpdateVendor = /* GraphQL */ `
   subscription OnUpdateVendor {
     onUpdateVendor {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;
@@ -105,10 +160,33 @@ export const onDeleteVendor = /* GraphQL */ `
   subscription OnDeleteVendor {
     onDeleteVendor {
       id
-      vendorCategory
-      vendorSubCategory
+      userID
+      vendorID
+      user {
+        id
+        type
+        userName
+        email
+        image
+        location
+        bio
+        phone
+        createdAt
+        updatedAt
+      }
+      vendorCategory {
+        id
+        vendorType
+        vendorSubCategory
+        createdAt
+        updatedAt
+      }
+      longitude
+      latitude
       createdAt
       updatedAt
+      vendorUserId
+      vendorVendorCategoryId
     }
   }
 `;
