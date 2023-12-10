@@ -14,14 +14,21 @@ type User @model {
   id: ID!
   type: String!
   userName: String!
-  email: String!
-  phone: Int!
+  email: String! @index(name: "userbyEmail", queryField: "userbyEmail")
+  image: String
+  location: String
+  bio: String
+  phone: String
 }
 
 type Vendor @model {
   id: ID!
-  vendorCategory: String!
-  vendorSubCategory: String
+  userID: ID! @index(name: "vendorbyUserID", queryField: "vendorbyUserID")
+  vendorID: ID!
+  user: User @hasOne
+  vendorCategory: VendorCategory @hasOne
+  longitude: String
+  latitude: String
 }
 
 type VendorCategory @model {

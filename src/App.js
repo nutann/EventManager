@@ -95,7 +95,7 @@ function App() {
             <hr className={dividerStyle} />
             <Button title="New Post" onClick={() => updateOverlayVisibility(true)} />
             <Routes>
-              <Route exact path="/" element={<Posts posts={categories} />} ></Route>
+              <Route exact path="/" element={<Posts posts={categories} signOut={signOut}/>} ></Route>
               <Route path="/post/:id" element={<Post />}></Route>
             </Routes>
           </div>
@@ -107,8 +107,6 @@ function App() {
             posts={posts}
           />
         )}
-
-      <button onClick={signOut}>Sign out</button>
     </div>
        )}
     </Authenticator>

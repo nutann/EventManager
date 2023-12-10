@@ -3,11 +3,13 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
 export default function Posts({
-  posts = []
+  posts = [],
+  signOut
 }) {
   return (
     <>
       <h1>Posts</h1>
+      <button onClick={signOut}>Sign out</button>
       {
         posts.map(post => (
           <Link to={`/post/${post.id}`} className={linkStyle} key={post.id}>
