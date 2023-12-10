@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "postagram",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authpostagramf5c61a0b",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "amplify-postagram-devss-161114-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/1dd68187b47ecae68847a618e75934b846c53ee2"
+}

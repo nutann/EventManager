@@ -1,0 +1,117 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-postagram-devss-161114-authRole",
+      "UnauthRoleArn": "arn:aws:iam::961585764070:role/amplify-postagram-devss-161114-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::961585764070:role/amplify-postagram-devss-161114-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-postagram-devss-161114-deployment",
+      "UnauthRoleName": "amplify-postagram-devss-161114-unauthRole",
+      "StackName": "amplify-postagram-devss-161114",
+      "StackId": "arn:aws:cloudformation:ap-south-1:961585764070:stack/amplify-postagram-devss-161114/626bd790-5d22-11ee-8d38-06b3303e2d14",
+      "AmplifyAppId": "d2cxbvnuvhangg"
+    }
+  },
+  "api": {
+    "postagram": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "postagramf5c61a0b",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "apiKeyExpirationDate": "2024-10-03T17:24:56.556Z",
+              "description": "public"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authpostagramf5c61a0b"
+              }
+            }
+          ]
+        },
+        "GraphQLAPIIdOutput": "cbrsgshldngxjj2dd2eqcebsmu",
+        "GraphQLAPIEndpointOutput": "https://gexdptppx5fqtdsfqpsolml6km.appsync-api.ap-south-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-42d67n26cfdynjfc2af5hdv224"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-postagram-devss-161114-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apipostagram"
+      },
+      "lastPushTimeStamp": "2023-11-24T09:51:16.636Z",
+      "lastPushDirHash": "RZQLJXrpyCNVyt9Yh0XoCm0vUow="
+    }
+  },
+  "auth": {
+    "postagramf5c61a0b": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-postagram-devss-161114-deployment/amplify-cfn-templates/auth/postagramf5c61a0b-cloudformation-template.json",
+        "logicalId": "authpostagramf5c61a0b"
+      },
+      "lastPushTimeStamp": "2023-11-24T09:51:15.577Z",
+      "output": {
+        "UserPoolId": "ap-south-1_ChJqGIzjA",
+        "AppClientIDWeb": "33n4c0rtij2th74dleq2sndte",
+        "AppClientID": "2a7cobf67df5gdsdgp1tdnbq5f",
+        "IdentityPoolId": "ap-south-1:0ed6e93b-ddbe-469d-aa37-fb5c8f282369",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-south-1:961585764070:userpool/ap-south-1_ChJqGIzjA",
+        "IdentityPoolName": "postagramf5c61a0b_identitypool_f5c61a0b__devss",
+        "UserPoolName": "postagramf5c61a0b_userpool_f5c61a0b"
+      },
+      "lastPushDirHash": "t06nd7lpj8ATnsrUUJnxHmClqfc="
+    }
+  },
+  "storage": {
+    "images": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "lastPushTimeStamp": "2023-11-24T09:51:15.590Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-postagram-devss-161114-deployment/amplify-cfn-templates/storage/cloudformation-template.json",
+        "logicalId": "storageimages"
+      },
+      "output": {
+        "BucketName": "postagram69f88c79076c42dd9bb67fd86c970d9b161114-devss",
+        "Region": "ap-south-1"
+      },
+      "lastPushDirHash": "9mASohie6QUhww9ftsZ/WZQN16A="
+    }
+  }
+}
