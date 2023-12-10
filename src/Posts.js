@@ -50,8 +50,3 @@ const postContainer = css`
     border-color: #0070f3;
   }
 `
-
-const imageStyle = css`
-  width: 100%;
-  max-width: 400px;
-`
